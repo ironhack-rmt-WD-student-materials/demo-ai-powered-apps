@@ -8,7 +8,7 @@ const recipeSchema = new Schema({
     enum: ["easy", "medium", "difficult"]
   },
   ingredients: [String],
-  description: String
+  instructions: String
 });
 
 module.exports = model("Recipe", recipeSchema);

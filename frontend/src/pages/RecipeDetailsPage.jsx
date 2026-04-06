@@ -40,13 +40,14 @@ function RecipeDetailsPage (props) {
         <>
           <h1>{recipe.title}</h1>
           <p><strong>Difficulty:</strong> {recipe.difficulty}</p>
-          <p><strong>Description:</strong> {recipe.description}</p>
           <p><strong>Ingredients:</strong></p>
           <ul>
             {recipe.ingredients && recipe.ingredients.map((ingredient, index) => (
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
+          <p><strong>Instructions:</strong></p>
+          <p>{recipe.instructions}</p>
         </>
       )}
 

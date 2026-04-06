@@ -5,7 +5,7 @@ import { API_URL } from "../../config/api";
 
 function EditRecipePage(props) {
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [instructions, setInstructions] = useState("");
   const [difficulty, setDifficulty] = useState("easy");
   const [ingredients, setIngredients] = useState("");
 
@@ -26,7 +26,7 @@ function EditRecipePage(props) {
       .then((response) => {
         const oneRecipe = response.data;
         setTitle(oneRecipe.title);
-        setDescription(oneRecipe.description);
+        setInstructions(oneRecipe.instructions);
         setDifficulty(oneRecipe.difficulty);
         setIngredients(oneRecipe.ingredients ? oneRecipe.ingredients.join("\n") : "");
       })
@@ -40,7 +40,7 @@ function EditRecipePage(props) {
     const ingredientsArray = ingredients.split("\n").filter(ing => ing.trim() !== "");
     const requestBody = { 
       title, 
-      description,
+      instructions,
       difficulty,
       ingredients: ingredientsArray
     };
@@ -88,13 +88,6 @@ function EditRecipePage(props) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        
-        <label>Description:</label>
-        <textarea
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
 
         <label>Difficulty:</label>
         <select
@@ -113,6 +106,13 @@ function EditRecipePage(props) {
           value={ingredients}
           onChange={(e) => setIngredients(e.target.value)}
           placeholder="Enter ingredients, one per line"
+        />
+
+        <label>Instructions:</label>
+        <textarea
+          name="instructions"
+          value={instructions}
+          onChange={(e) => setInstructions(e.target.value)}
         />
 
         <button type="submit">Update Recipe</button>

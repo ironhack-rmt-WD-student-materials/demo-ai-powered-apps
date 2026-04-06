@@ -9,7 +9,7 @@ function AddRecipe() {
     const [title, setTitle] = useState("");
     const [difficulty, setDifficulty] = useState("easy");
     const [ingredients, setIngredients] = useState("");
-    const [description, setDescription] = useState("");
+    const [instructions, setInstructions] = useState("");
 
     const navigate = useNavigate()
 
@@ -19,7 +19,7 @@ function AddRecipe() {
         const ingredientsArray = ingredients.split("\n").filter(ing => ing.trim() !== "");
         const requestBody = {
             title,
-            description,
+            instructions,
             difficulty,
             ingredients: ingredientsArray
         };
@@ -73,11 +73,11 @@ function AddRecipe() {
                     placeholder="Enter ingredients, one per line"
                 />
 
-                <label>Description:</label>
+                <label>Instructions:</label>
                 <textarea
-                    name="description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    name="instructions"
+                    value={instructions}
+                    onChange={(e) => setInstructions(e.target.value)}
                 />
 
                 <button type="submit">Submit</button>
