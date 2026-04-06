@@ -11,6 +11,8 @@ function AddRecipe() {
     const [ingredients, setIngredients] = useState("");
     const [instructions, setInstructions] = useState("");
 
+    const [isGenerating, setIsGenerating] = useState(false);
+
     const navigate = useNavigate()
 
 
@@ -38,6 +40,37 @@ function AddRecipe() {
                 navigate("/recipes")
             })
             .catch((error) => console.log(error));
+    };
+
+
+    const handleGenerateInstructions = () => {
+        setIsGenerating(true);
+
+        // Convert the ingredients string into an array
+        const ingredientsArray = ingredients.split("\n").filter(ing => ing.trim() !== "");
+
+        const requestBody = {
+            title,
+            difficulty,
+            ingredients: ingredientsArray
+        };
+
+        const storedToken = localStorage.getItem('authToken');
+
+        axios
+            .post(
+                `${API_URL}/api/recipes/generate-instructions`,
+                requestBody,
+                { headers: { Authorization: `Bearer ${storedToken}` } }
+            )
+            .then((response) => {
+                setInstructions(response.data.instructions);
+                setIsGenerating(false);
+            })
+            .catch((error) => {
+                console.log(error);
+                setIsGenerating(false);
+            });
     };
 
 
@@ -73,11 +106,22 @@ function AddRecipe() {
                     placeholder="Enter ingredients, one per line"
                 />
 
-                <label>Instructions:</label>
+                <div className="instructions-header">
+                    <label>Instructions:</label>
+                    <button type="button" onClick={handleGenerateInstructions} disabled={isGenerating}>
+                        <span className="ai-button-content">
+                            {isGenerating ? <span className="ai-button-spinner" aria-hidden="true" /> : <span aria-hidden="true">✨</span>}
+                            <span>{isGenerating ? "Generating..." : "Generate with AI"}</span>
+                        </span>
+                    </button>
+                </div>
+                
                 <textarea
+                    className="instructions-textarea"
                     name="instructions"
                     value={instructions}
                     onChange={(e) => setInstructions(e.target.value)}
+                    disabled={isGenerating}
                 />
 
                 <button type="submit">Submit</button>
