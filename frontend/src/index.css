@@ -173,6 +173,30 @@ select:focus {
   flex-direction: column;
 }
 
+.SignupPage h1,
+.LoginPage h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-switch {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.auth-switch p {
+  margin-bottom: 6px;
+}
+
+.auth-switch a {
+  color: #d97706;
+  font-weight: 700;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
 .EditRecipePage button,
 .AddRecipe button {
   margin-top: 16px;
