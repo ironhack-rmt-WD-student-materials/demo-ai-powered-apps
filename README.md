@@ -137,7 +137,8 @@ If you want to take this further, here's a list with other interesting topics to
 Aprende a integrar IA a tu Aplicación Web:
 - https://www.youtube.com/watch?v=T0VlcnJ9r5A
 - in Spanish
-- includes some initial demos without the AI SDK, with streaming, etc
+- starts with an initial demo using the OpenAI api + then implements the logic with Vercel AI SDK 
+- it also includes other interesting topics like rate limit, streaming, etc
 -->
 
 AI SDK V5 Tutorials:
