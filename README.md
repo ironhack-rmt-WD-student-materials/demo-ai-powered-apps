@@ -65,7 +65,7 @@ First, you need to create an account with an AI provider.
 For this demo, we'll use Mistral, which at the moment provides a free tier with the "Experiment plan". 
 
 
-1. Create a Mistral account, following the instructions [here](https://help.mistral.ai/en/articles/455206-how-can-i-try-the-api-for-free-with-the-experiment-plan)
+1. Create a Mistral account, following the instructions [here](https://intercom.help/mistral-ai/en/articles/14841555-how-can-i-try-the-api-for-free-with-the-experiment-plan)
 
 2. Once you have an account, create an API key (on their website)
 
